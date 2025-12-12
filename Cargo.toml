@@ -1,0 +1,25 @@
+[package]
+name = "fn-coerce"
+version = "0.1.0"
+edition = "2024"
+license = "MIT"
+readme = "README.md"
+description = "Helper for fn pointer coercing."
+repository = "https://github.com/NewYearPrism/fn-coerce"
+
+[dependencies]
+stringz = "0.4.1"
+
+[features]
+default = ["system-abi"]
+safe = []
+system-abi = []
+C-abi = []
+stdcall-abi = []
+cdecl-abi = []
+win64-abi = []
+system-unwind-abi = []
+C-unwind-abi = []
+stdcall-unwind-abi = []
+cdecl-unwind-abi = []
+win64-unwind-abi = []
