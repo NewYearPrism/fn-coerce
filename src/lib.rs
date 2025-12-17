@@ -2,7 +2,7 @@
 
 pub use stringz::string as lit_t;
 
-pub struct FnCo<const N: usize, const UNSAFE: bool, Abi> {
+pub struct FnCo<const N: usize, const UNSAFE: bool = true, Abi = lit_t!("system")> {
     __p_abi: core::marker::PhantomData<Abi>,
 }
 
@@ -24,7 +24,9 @@ macro_rules! impl_extern {
         impl_extern!($cc, $n-1, $($rest,)*);
     };
     (@impl_one $cc:literal, $n:expr, $($all:ident,)*) => {
+        #[cfg(feature = "unsafe")]
         impl Sealed for FnCo<{$n}, {true}, stringz::string!($cc)> {}
+        #[cfg(feature = "unsafe")]
         impl<R, $($all,)*> Co<unsafe extern $cc fn($($all,)*) -> R> for FnCo<{$n}, {true}, stringz::string!($cc)> {
             type FnPtr = unsafe extern $cc fn($($all,)*) -> R;
             fn co(i: unsafe extern $cc fn($($all,)*) -> R) -> unsafe extern $cc fn($($all,)*) -> R { i }

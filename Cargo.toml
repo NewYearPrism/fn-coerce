@@ -1,6 +1,6 @@
 [package]
 name = "fn-coerce"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2024"
 license = "MIT"
 readme = "README.md"
@@ -11,7 +11,8 @@ repository = "https://github.com/NewYearPrism/fn-coerce"
 stringz = "0.4.1"
 
 [features]
-default = ["system-abi"]
+default = ["system-abi", "unsafe"]
+unsafe = []
 safe = []
 system-abi = []
 C-abi = []
